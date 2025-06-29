@@ -1,6 +1,16 @@
 import { Button } from '@/components'
+import { useNavigate } from 'react-router'
 
 export default function ProjectList() {
+  const navigate = useNavigate()
+
+  const handleNewProject = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    navigate('/project-form')
+  }
+
   return (
     <div className="row flex-grow-1 justify-content-center align-items-start project-list-bg">
       <div className="col-8 text-center mt-5 p-5 bg-light rounded-2 bg-opacity-50">
@@ -17,7 +27,11 @@ export default function ProjectList() {
           <Button text="Search" iconClass="bi bi-search" />
         </form>
         <div className="mt-3">
-          <Button text="Add Project" iconClass="bi bi-plus-circle-dotted" />
+          <Button
+            text="Add Project"
+            iconClass="bi bi-plus-circle-dotted"
+            onClick={handleNewProject}
+          />
         </div>
       </div>
     </div>

@@ -6,8 +6,26 @@ import App from './App.tsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from 'react-router'
+import { ProjectDetails, ProjectForm, ProjectList } from './components/index.ts'
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<App />}>
+      <Route path="/" element={<ProjectList />} />
+      <Route path="project-form" element={<ProjectForm />} />
+      <Route path="project-details/:id" element={<ProjectDetails />} />
+    </Route>
+  )
+)
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>
 )
