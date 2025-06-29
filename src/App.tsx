@@ -1,6 +1,4 @@
-import Footer from './components/layout/Footer'
-import Header from './components/layout/Header'
-import ProjectList from './components/pages/ProjectList'
+import { Header, Footer, ProjectList } from '@/components'
 
 export default function App() {
   return (
