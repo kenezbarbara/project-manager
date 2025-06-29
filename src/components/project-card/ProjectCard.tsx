@@ -1,19 +1,27 @@
+import './ProjectCard.css'
+
 interface ProjectCardProps {
   name: string
   description: string
-  imageUrl: string
 }
 
-export default function ProjectCard({
-  name,
-  description,
-  imageUrl,
-}: ProjectCardProps) {
+export default function ProjectCard({ name, description }: ProjectCardProps) {
+  const getPlaceholderImageUrl = (projectName: string) => {
+    const words = projectName.split(' ')
+    let initials = words.map((word) => word.charAt(0).toUpperCase()).join('')
+    if (!initials) {
+      initials = 'N/A' // Not Available
+    }
+    return `https://placehold.co/150x75?text=${encodeURIComponent(initials)}`
+  }
+
+  const imageUrl = getPlaceholderImageUrl(name)
+
   return (
     <div className="col">
       <div className="card text-center shadow mx-auto mx-md-3 mx-lg-5">
         <img src={imageUrl} alt={name} />
-        <div className="card-body">
+        <div className="card-body text-white card-bg-color">
           <h5 className="card-title">{name}</h5>
           <p className="card-text">{description}</p>
         </div>

@@ -52,7 +52,6 @@ export default function ProjectList() {
             <ProjectCard
               name={project.name}
               description={project.description}
-              imageUrl=""
             />
           ))}
         </div>
