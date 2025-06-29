@@ -1,7 +1,11 @@
-import { Button } from '@/components'
+import { Button, ProjectCard } from '@/components'
+import { getAllProjects } from '@/services/projectService'
+import type { Project } from '@/types'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 
 export default function ProjectList() {
+  const [projects, setProjects] = useState<Array<Project>>([])
   const navigate = useNavigate()
 
   const handleNewProject = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -10,6 +14,14 @@ export default function ProjectList() {
 
     navigate('/project-form')
   }
+
+  const loadProjects = () => {
+    getAllProjects().then((resp) => setProjects(resp))
+  }
+
+  useEffect(() => {
+    loadProjects()
+  }, [])
 
   return (
     <div className="row flex-grow-1 justify-content-center align-items-start project-list-bg">
@@ -32,6 +44,17 @@ export default function ProjectList() {
             iconClass="bi bi-plus-circle-dotted"
             onClick={handleNewProject}
           />
+        </div>
+      </div>
+      <div className="container">
+        <div className="row mx-auto row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-5 my-5">
+          {projects.map((project) => (
+            <ProjectCard
+              name={project.name}
+              description={project.description}
+              imageUrl=""
+            />
+          ))}
         </div>
       </div>
     </div>
