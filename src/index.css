@@ -1,4 +1,20 @@
+/*Background style*/
 .project-list-bg {
   background-image: url('./assets/project_list_background.png');
   background-size: cover;
+}
+
+/*SVG icon styles */
+.icon-white {
+  color: white;
+  transition: color 0.3s ease-in-out;
+}
+.btn:hover .icon-white {
+  color: black;
+}
+.icon-small {
+  font-size: 1rem;
+}
+.icon-medium {
+  font-size: 1.5rem;
 }

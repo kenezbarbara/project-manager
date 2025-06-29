@@ -1,3 +1,5 @@
+import Button from '../Button'
+
 export default function ProjectList() {
   return (
     <div className="row flex-grow-1 justify-content-center align-items-start project-list-bg">
@@ -12,10 +14,11 @@ export default function ProjectList() {
             aria-label="Search"
             style={{ width: '40%' }}
           />
-          <button className="btn btn-outline-light mt-2" type="submit">
-            Search
-          </button>
+          <Button text="Search" iconClass="bi bi-search" />
         </form>
+        <div className="mt-3">
+          <Button text="Add Project" iconClass="bi bi-plus-circle-dotted" />
+        </div>
       </div>
     </div>
   )
