@@ -11,8 +11,8 @@
         { "name": "Carol White", "position": "BI Analyst" }
       ],
       "links": [
-        { "url": "https://confluence.example.com/edw-upgrade" },
-        { "url": "https://jira.example.com/EDWU" }
+        "https://confluence.example.com/edw-upgrade",
+        "https://jira.example.com/EDWU"
       ]
     },
     {
@@ -26,8 +26,8 @@
         { "name": "Frank Black", "position": "Mobile Developer" }
       ],
       "links": [
-        { "url": "https://trello.com/loyalty-program" },
-        { "url": "https://figma.com/loyalty-app" }
+        "https://trello.com/loyalty-program",
+        "https://figma.com/loyalty-app"
       ]
     },
     {
@@ -40,8 +40,8 @@
         { "name": "Henry King", "position": "NLP Specialist" }
       ],
       "links": [
-        { "url": "https://github.com/company/ai-assistant" },
-        { "url": "https://docs.example.com/ai-assistant" }
+        "https://github.com/company/ai-assistant",
+        "https://docs.example.com/ai-assistant"
       ]
     },
     {
@@ -54,7 +54,7 @@
         { "name": "Jack Adams", "position": "Integration Specialist" },
         { "name": "Karen Baker", "position": "Data Scientist" }
       ],
-      "links": [{ "url": "https://asana.com/supply-chain-digitization" }]
+      "links": ["https://asana.com/supply-chain-digitization"]
     },
     {
       "id": "c2d3e4f5-a6b7-4890-1234-567890abcdef",
@@ -65,7 +65,7 @@
         { "name": "Liam Clark", "position": "Security Analyst" },
         { "name": "Mia Davis", "position": "HR Trainer" }
       ],
-      "links": [{ "url": "https://lms.example.com/cybersecurity-course" }]
+      "links": ["https://lms.example.com/cybersecurity-course"]
     },
     {
       "id": "d3e4f5a6-b7c8-4901-2345-67890abcdef0",
@@ -76,7 +76,7 @@
         { "name": "Noah Evans", "position": "Financial Controller" },
         { "name": "Olivia Garcia", "position": "RPA Developer" }
       ],
-      "links": [{ "url": "https://uipath.com/invoice-automation" }]
+      "links": ["https://uipath.com/invoice-automation"]
     },
     {
       "id": "e4f5a6b7-c8d9-4012-3456-7890abcdef01",
@@ -87,7 +87,7 @@
         { "name": "Peter Hayes", "position": "IT Support Specialist" },
         { "name": "Quinn Jones", "position": "Internal Communications Lead" }
       ],
-      "links": [{ "url": "https://microsoft.com/teams-guide" }]
+      "links": ["https://microsoft.com/teams-guide"]
     },
     {
       "id": "f5a6b7c8-d9e0-4123-4567-890abcdef012",
@@ -99,8 +99,8 @@
         { "name": "Sam Lee", "position": "Frontend Developer" }
       ],
       "links": [
-        { "url": "https://googleanalytics.com/checkout-funnel" },
-        { "url": "https://hotjar.com/checkout-heatmaps" }
+        "https://googleanalytics.com/checkout-funnel",
+        "https://hotjar.com/checkout-heatmaps"
       ]
     },
     {
@@ -112,7 +112,7 @@
         { "name": "Tina Miller", "position": "HR Lead" },
         { "name": "Umar Patel", "position": "Full-stack Developer" }
       ],
-      "links": [{ "url": "https://sharepoint.example.com/hr-portal" }]
+      "links": ["https://sharepoint.example.com/hr-portal"]
     },
     {
       "id": "b7c8d9e0-f1a2-4345-6789-012345678901",
@@ -123,7 +123,7 @@
         { "name": "Victoria Queen", "position": "Sales Operations" },
         { "name": "Walter Rogers", "position": "CRM Consultant" }
       ],
-      "links": [{ "url": "https://salesforce.com/customization" }]
+      "links": ["https://salesforce.com/customization"]
     },
     {
       "id": "c8d9e0f1-a2b3-4456-7890-123456789012",
@@ -134,7 +134,7 @@
         { "name": "Xavier Scott", "position": "IoT Engineer" },
         { "name": "Yara Thomas", "position": "Maintenance Manager" }
       ],
-      "links": [{ "url": "https://azure.microsoft.com/predictive-pilot" }]
+      "links": ["https://azure.microsoft.com/predictive-pilot"]
     },
     {
       "id": "d9e0f1a2-b3c4-4567-8901-234567890123",
@@ -145,7 +145,7 @@
         { "name": "Zoe Under", "position": "FinOps Specialist" },
         { "name": "Adam Vance", "position": "Cloud Engineer" }
       ],
-      "links": [{ "url": "https://aws.amazon.com/cost-explorer" }]
+      "links": ["https://aws.amazon.com/cost-explorer"]
     },
     {
       "id": "e0f1a2b3-c4d5-4678-9012-345678901234",
@@ -156,7 +156,7 @@
         { "name": "Beth Wilson", "position": "QA Automation Engineer" },
         { "name": "Chris Young", "position": "DevOps Engineer" }
       ],
-      "links": [{ "url": "https://jenkins.io/pipeline-automation" }]
+      "links": ["https://jenkins.io/pipeline-automation"]
     },
     {
       "id": "f1a2b3c4-d5e6-4789-0123-456789012345",
@@ -167,7 +167,7 @@
         { "name": "Diana Allen", "position": "Organizational Development" },
         { "name": "Ethan Bell", "position": "System Administrator" }
       ],
-      "links": [{ "url": "https://surveymonkey.com/employee-feedback" }]
+      "links": ["https://surveymonkey.com/employee-feedback"]
     },
     {
       "id": "a2b3c4d5-e6f7-4890-1234-567890123456",
@@ -178,7 +178,7 @@
         { "name": "Fiona Cole", "position": "Marketing Technologist" },
         { "name": "George Dean", "position": "API Developer" }
       ],
-      "links": [{ "url": "https://bynder.com/integrations" }]
+      "links": ["https://bynder.com/integrations"]
     },
     {
       "id": "b3c4d5e6-f7a8-4901-2345-678901234567",
@@ -189,7 +189,7 @@
         { "name": "Hannah Evans", "position": "Machine Learning Engineer" },
         { "name": "Ian Foster", "position": "Content Strategist" }
       ],
-      "links": [{ "url": "https://google.ai/personalization" }]
+      "links": ["https://google.ai/personalization"]
     },
     {
       "id": "c4d5e6f7-a8b9-4012-3456-789012345678",
@@ -200,7 +200,7 @@
         { "name": "Julia Gray", "position": "Blockchain Developer" },
         { "name": "Kyle Hill", "position": "Legal Counsel" }
       ],
-      "links": [{ "url": "https://ethereum.org/blockchain-docs" }]
+      "links": ["https://ethereum.org/blockchain-docs"]
     },
     {
       "id": "d5e6f7a8-b9c0-4123-4567-890123456789",
@@ -211,7 +211,7 @@
         { "name": "Laura Ivy", "position": "Sustainability Manager" },
         { "name": "Mark Jones", "position": "Facilities Manager" }
       ],
-      "links": [{ "url": "https://epa.gov/energy-star" }]
+      "links": ["https://epa.gov/energy-star"]
     },
     {
       "id": "e6f7a8b9-c0d1-4234-5678-901234567890",
@@ -222,7 +222,7 @@
         { "name": "Nancy Kelly", "position": "Network Administrator" },
         { "name": "Oscar Lewis", "position": "IT Project Manager" }
       ],
-      "links": [{ "url": "https://zoom.us/enterprise" }]
+      "links": ["https://zoom.us/enterprise"]
     },
     {
       "id": "f7a8b9c0-d1e2-4345-6789-012345678901",
@@ -233,7 +233,7 @@
         { "name": "Paula Morgan", "position": "HR Specialist" },
         { "name": "Quinn Nelson", "position": "Frontend Developer" }
       ],
-      "links": [{ "url": "https://bonusly.com/recognition-platform" }]
+      "links": ["https://bonusly.com/recognition-platform"]
     }
   ]
 }

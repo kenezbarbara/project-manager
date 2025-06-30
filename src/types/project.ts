@@ -1,11 +1,10 @@
-import type { teamMember } from './teamMember'
-import type { link } from './link'
+import type { TeamMember } from './teamMember'
 
 export type Project = {
   id: string
   name: string
   description: string
   imageUrl: string
-  teamMembers: teamMember[]
-  links: link[]
+  teamMembers: TeamMember[]
+  links: string[]
 }
