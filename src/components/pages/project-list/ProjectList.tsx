@@ -1,5 +1,5 @@
 import { Button, ProjectCard } from '@/components'
-import { getAllProjects } from '@/services/projectService'
+import { getAllProjects } from '@/services/dataService'
 import type { Project } from '@/types'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'

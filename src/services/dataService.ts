@@ -23,3 +23,23 @@ export const addProject = async (
     throw new Error('Failed to add project')
   }
 }
+
+//*Get all employees
+export const getAllEmployees = async (): Promise<string[]> => {
+  try {
+    const result = await axios.get<string[]>(`${API_BASE_URL}/employees`)
+    return result.data
+  } catch {
+    throw new Error('Failed to fetch employees')
+  }
+}
+
+//*Get all positions
+export const getAllPositions = async (): Promise<string[]> => {
+  try {
+    const result = await axios.get<string[]>(`${API_BASE_URL}/positions`)
+    return result.data
+  } catch {
+    throw new Error('Failed to fetch positions')
+  }
+}
