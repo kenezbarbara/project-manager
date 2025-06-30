@@ -1,19 +1,19 @@
+import { useEffect, useState } from 'react'
 import FormButton from '../form-button/FormButton'
 import './TeamMembersStep.css'
+import { getAllPositions } from '@/services/dataService'
 
 export default function TeamMembersStep() {
-  const mockPositions = [
-    'Software Engineer',
-    'Data Scientist',
-    'DevOps Engineer',
-    'Cybersecurity Analyst',
-    'Cloud Architect',
-    'UI/UX Designer',
-    'Network Administrator',
-    'Database Administrator',
-    'IT Project Manager',
-    'Quality Assurance Engineer',
-  ]
+  const [positions, setPositions] = useState<Array<string>>([])
+
+  const loadPositions = () => {
+    getAllPositions().then((resp) => setPositions(resp))
+  }
+
+  useEffect(() => {
+    loadPositions()
+  }, [])
+
   return (
     <div className="form-step-container">
       <h3 className="form-step-container-text">Add Team Members</h3>
@@ -40,9 +40,9 @@ export default function TeamMembersStep() {
           <label htmlFor="employee-position">Position</label>
           <select id="employee-position">
             <option value="">Select a position</option>
-            {mockPositions.map((pos, index) => (
-              <option key={index} value={pos}>
-                {pos}
+            {positions.map((position, index) => (
+              <option key={index} value={position}>
+                {position}
               </option>
             ))}
           </select>
