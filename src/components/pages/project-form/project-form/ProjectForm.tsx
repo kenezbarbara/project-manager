@@ -1,17 +1,17 @@
 import ProgressBar from '@/components/progress-bar/ProgressBar'
 import './ProjectForm.css'
-import StepButton from '../step-button/StepButton'
-import TeamMembersStep from '../team-member-step/TeamMembersStep'
+import FormButton from '../form-button/FormButton'
+import LinksStep from '../link-step/LinksStep'
 
 export default function ProjectForm() {
   return (
     <div>
       <div className="project-form-header">
         <ProgressBar />
-        <TeamMembersStep />
+        <LinksStep />
         <div className="btn-container">
-          <StepButton text="Back" color="#212529" />
-          <StepButton text="Continue" color="#0dcaf0" />
+          <FormButton text="Back" color="#212529" />
+          <FormButton text="Continue" color="#0dcaf0" />
         </div>
       </div>
     </div>
