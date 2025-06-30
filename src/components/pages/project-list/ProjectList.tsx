@@ -24,7 +24,7 @@ export default function ProjectList() {
   }, [])
 
   return (
-    <div className="row flex-grow-1 justify-content-center align-items-start project-list-bg">
+    <div className="row flex-grow-1 justify-content-center align-items-start ">
       <div className="col-8 text-center mt-5 p-5 bg-light rounded-2 bg-opacity-50">
         <h1>All Corporate Projects</h1>
         <h6>browse company projects or add a new project easily</h6>
@@ -46,15 +46,10 @@ export default function ProjectList() {
           />
         </div>
       </div>
-      <div className="container">
-        <div className="row mx-auto row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-5 my-5">
-          {projects.map((project) => (
-            <ProjectCard
-              name={project.name}
-              description={project.description}
-            />
-          ))}
-        </div>
+      <div className="row mx-auto row-cols-1 row-cols-md-2 row-cols-xl-3 g-5 my-5">
+        {projects.map((project) => (
+          <ProjectCard name={project.name} description={project.description} />
+        ))}
       </div>
     </div>
   )
