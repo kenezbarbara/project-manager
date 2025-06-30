@@ -1,4 +1,4 @@
-import './ProjectBasicInfo.css'
+import './ProjectInfoStep.css'
 
 export default function ProjectBasicInfo() {
   return (

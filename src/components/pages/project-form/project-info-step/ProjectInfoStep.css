@@ -1,4 +1,3 @@
-/* Alapvető stílus az input és textarea elemekhez */
 input,
 textarea {
   box-sizing: border-box;
@@ -21,13 +20,13 @@ textarea:focus {
 
 input::placeholder {
   color: red;
-  opacity: 0.5; /* Biztosítja, hogy látható legyen */
+  opacity: 0.5;
 }
 
 textarea {
   resize: vertical; /* Csak függőlegesen lehessen átméretezni */
-  min-height: 100px; /* Minimális magasság */
-  max-height: 300px; /* Maximális magasság */
+  min-height: 100px;
+  max-height: 300px;
 }
 
 label {
@@ -36,7 +35,6 @@ label {
   color: #555;
 }
 
-/* Form container stílusa az elrendezéshez */
 .project-form {
   padding: 1.5rem;
   background-color: whitesmoke;
