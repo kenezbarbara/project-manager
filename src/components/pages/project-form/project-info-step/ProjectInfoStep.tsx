@@ -1,6 +1,6 @@
 import './ProjectInfoStep.css'
 
-export default function ProjectBasicInfo() {
+export default function ProjectInfoStep() {
   return (
     <form className="project-form" action="">
       <h5>Enter your project details as a first step</h5>

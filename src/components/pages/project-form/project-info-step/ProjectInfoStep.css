@@ -18,11 +18,6 @@ textarea:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-input::placeholder {
-  color: red;
-  opacity: 0.5;
-}
-
 textarea {
   resize: vertical; /* Csak függőlegesen lehessen átméretezni */
   min-height: 100px;
