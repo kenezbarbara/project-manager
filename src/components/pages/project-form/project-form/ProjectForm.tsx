@@ -1,6 +1,7 @@
 import ProgressBar from '@/components/progress-bar/ProgressBar'
 import ProjectBasicInfo from '../project-basic-info/ProjectBasicInfo'
 import './ProjectForm.css'
+import StepButton from '../step-button/StepButton'
 
 export default function ProjectForm() {
   return (
@@ -9,8 +10,8 @@ export default function ProjectForm() {
         <ProgressBar />
         <ProjectBasicInfo />
         <div className="btn-container">
-          <button>Back</button>
-          <button>Continue</button>
+          <StepButton text="Back" color="#212529" />
+          <StepButton text="Continue" color="#0dcaf0" />
         </div>
       </div>
     </div>
