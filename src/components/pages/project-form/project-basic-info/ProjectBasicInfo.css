@@ -1,0 +1,47 @@
+/* Alapvető stílus az input és textarea elemekhez */
+input,
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  line-height: 1;
+  color: #333;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+input::placeholder {
+  color: red;
+  opacity: 0.5; /* Biztosítja, hogy látható legyen */
+}
+
+textarea {
+  resize: vertical; /* Csak függőlegesen lehessen átméretezni */
+  min-height: 100px; /* Minimális magasság */
+  max-height: 300px; /* Maximális magasság */
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+/* Form container stílusa az elrendezéshez */
+.project-form {
+  padding: 1.5rem;
+  background-color: whitesmoke;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 80vh;
+  margin: 1.5rem auto;
+}
