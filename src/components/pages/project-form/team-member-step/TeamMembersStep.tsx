@@ -15,8 +15,10 @@ export default function TeamMembersStep() {
   ]
   return (
     <div className="form-step-container">
-      <h3>Add Team Members</h3>
-      <p>Specify the colleagues working on this project.</p>
+      <h3 className="form-step-container-text">Add Team Members</h3>
+      <p className="form-step-container-text">
+        Specify the colleagues working on this project.
+      </p>
 
       <div className="team-member-row">
         <div className="select-collector">

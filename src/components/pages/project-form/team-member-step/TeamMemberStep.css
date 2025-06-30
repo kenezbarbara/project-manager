@@ -7,8 +7,7 @@
   margin: 1.5rem auto;
 }
 
-.form-step-container h3,
-p {
+.form-step-container-text {
   color: #555;
 }
 
@@ -24,18 +23,24 @@ select {
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid whitesmoke;
   border-radius: 0.5rem;
   font-size: 1rem;
   line-height: 1;
   color: #333;
 }
 
-input:focus,
+input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
 select:focus {
   border-color: #007bff;
   outline: none;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  background-color: whitesmoke;
 }
 
 .team-member-row {
@@ -63,7 +68,7 @@ select:focus {
   right: 0;
   z-index: 100;
   background-color: white;
-  border: 1px solid white;
+  border: 1px solid black;
   border-top: none;
   max-height: 20vh;
   overflow-y: auto;
@@ -71,14 +76,19 @@ select:focus {
 }
 
 .autocomplete-item {
-  padding: 0.5rem;
+  padding: 0.1rem 0.5rem;
   cursor: pointer;
   border-bottom: 1px solid white;
   color: #333;
 }
 
 .autocomplete-item:hover {
-  background-color: whitesmoke;
+  background-color: #0d6efd;
+  color: white;
+}
+
+.autocomplete-item:last-child {
+  border-bottom: none; /* Az utolsó elemen ne legyen aláhúzás */
 }
 
 /* Responsiveness (opcionális, de jó gyakorlat) */
