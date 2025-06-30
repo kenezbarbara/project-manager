@@ -1,3 +1,4 @@
+import FormButton from '../form-button/FormButton'
 import './TeamMembersStep.css'
 
 export default function TeamMembersStep() {
@@ -45,6 +46,9 @@ export default function TeamMembersStep() {
               </option>
             ))}
           </select>
+        </div>
+        <div className="btn-holder">
+          <FormButton text="Add Team Member" color="#848789" />
         </div>
       </div>
     </div>

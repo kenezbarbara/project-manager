@@ -11,13 +11,13 @@
   color: #555;
 }
 
-label {
+.select-collector label {
   display: inline-block;
   margin-bottom: 0.5rem;
   color: #555;
 }
 
-input,
+.select-collector input,
 select {
   box-sizing: border-box;
   width: 100%;
@@ -30,13 +30,13 @@ select {
   color: #333;
 }
 
-input:focus {
+.select-collector input:focus {
   border-color: #007bff;
   outline: none;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-select:focus {
+.select-collector select:focus {
   border-color: #007bff;
   outline: none;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
@@ -45,7 +45,7 @@ select:focus {
 
 .team-member-row {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
+  grid-template-columns: 1fr 1fr 1fr auto;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
   padding: 1rem;
@@ -89,6 +89,13 @@ select:focus {
 
 .autocomplete-item:last-child {
   border-bottom: none;
+}
+
+.btn-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 @media (max-width: 768px) {
