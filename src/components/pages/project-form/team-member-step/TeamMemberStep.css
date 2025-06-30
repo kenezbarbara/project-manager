@@ -88,13 +88,12 @@ select:focus {
 }
 
 .autocomplete-item:last-child {
-  border-bottom: none; /* Az utolsó elemen ne legyen aláhúzás */
+  border-bottom: none;
 }
 
-/* Responsiveness (opcionális, de jó gyakorlat) */
 @media (max-width: 768px) {
   .team-member-row {
-    grid-template-columns: 1fr; /* Kisebb képernyőn egy oszlopba rendeződik */
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
 }

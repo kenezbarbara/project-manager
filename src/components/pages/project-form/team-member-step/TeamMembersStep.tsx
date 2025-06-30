@@ -29,11 +29,9 @@ export default function TeamMembersStep() {
             placeholder="Start typing a name..."
           />
           <div className="autocomplete-dropdown">
-            {/* Példa autocomplete elemek */}
             <div className="autocomplete-item">Alice Smith</div>
             <div className="autocomplete-item">Bob Johnson</div>
             <div className="autocomplete-item">Charlie Brown</div>
-            {/* ...további szűrt nevek */}
           </div>
         </div>
 
