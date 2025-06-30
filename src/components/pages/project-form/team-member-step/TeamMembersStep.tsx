@@ -1,4 +1,4 @@
-import './TeamMemberStep.css'
+import './TeamMembersStep.css'
 
 export default function TeamMembersStep() {
   const mockPositions = [
