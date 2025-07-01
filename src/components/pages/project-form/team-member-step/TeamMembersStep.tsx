@@ -3,6 +3,7 @@ import FormButton from '../form-button/FormButton'
 import './TeamMembersStep.css'
 import { getAllEmployees, getAllPositions } from '@/services/dataService'
 import type { TeamMember } from '@/types'
+import TeamMemberList from '../../TeamMemberList/TeamMemberList'
 
 // TeamMembersStep component allows users to add, view, and remove team members for a project,
 // including selecting employees and their positions.
@@ -143,29 +144,12 @@ export default function TeamMembersStep() {
         </div>
       </div>
       {teamMembers.length > 0 && (
-        <div className="added-team-members-container">
-          <h4>Current Team Members</h4>
-          <div className="team-members-list">
-            {teamMembers.map((member) => (
-              <div
-                key={`${member.name}-${member.position}`}
-                className="team-member-box"
-              >
-                <span className="member-name">{member.name}</span>
-                <span className="member-position">({member.position})</span>
-                {/* Remove member button */}
-                <button
-                  className="remove-member-btn"
-                  onClick={() =>
-                    handleRemoveTeamMember(member.name, member.position)
-                  }
-                >
-                  x
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
+        <TeamMemberList
+          members={teamMembers}
+          onRemove={handleRemoveTeamMember}
+          // We are in edit mode here, show 'x'
+          isEditable={true}
+        />
       )}
     </div>
   )
