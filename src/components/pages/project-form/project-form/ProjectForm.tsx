@@ -11,6 +11,7 @@ export interface ProjectFormValues {
   projectName: string
   projectDescription: string
   teamMembers: TeamMember[]
+  links: string[]
 }
 
 export interface ProjectFormErrors {
@@ -23,6 +24,7 @@ export default function ProjectForm() {
     projectName: '',
     projectDescription: '',
     teamMembers: [],
+    links: [],
   }
 
   const initialFormErrors: ProjectFormErrors = {
@@ -54,7 +56,9 @@ export default function ProjectForm() {
           />
         )
       case 3:
-        return <LinksStep />
+        return (
+          <LinksStep setFormValues={setFormValues} formValues={formValues} />
+        )
       default:
         return (
           <ProjectInfoStep
@@ -128,7 +132,7 @@ export default function ProjectForm() {
             visibility={currentStep > 1 ? 'visible' : 'hidden'}
           />
           <FormButton
-            text="Continue"
+            text={currentStep === 3 ? 'Submit' : 'Continue'}
             color="#0dcaf0"
             onClick={handleContinue}
           />

@@ -1,11 +1,17 @@
-import { useState } from 'react'
+import { useState, type Dispatch, type SetStateAction } from 'react'
 import FormButton from '../form-button/FormButton'
 import './LinksStep.css'
 import ProjectLinkList from '../../project-link-list/ProjectLinkList'
+import type { ProjectFormValues } from '../project-form/ProjectForm'
 
-export default function LinksStep() {
+interface LinksStepProps {
+  setFormValues: Dispatch<SetStateAction<ProjectFormValues>>
+  formValues: ProjectFormValues
+}
+
+const LinksStep: React.FC<LinksStepProps> = ({ setFormValues, formValues }) => {
   const [selectedLink, setSelectedLink] = useState<string>('')
-  const [links, setLinks] = useState<string[]>([])
+  const links = formValues.links
 
   const handleAddLink = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -17,13 +23,23 @@ export default function LinksStep() {
         return
       }
       // Check if the link already exists
-      setLinks((prevLinks) => [...prevLinks, newLink])
+      setFormValues((prevValues: ProjectFormValues) => ({
+        ...prevValues,
+        links: [...prevValues.links, newLink],
+      }))
       setSelectedLink('')
     }
   }
 
   const handleRemoveLink = (link: string) => {
-    setLinks((prevLinks) => prevLinks.filter((l) => l !== link))
+    setFormValues((prevValues: ProjectFormValues) => {
+      const filteredlinks = prevValues.links.filter((l) => l !== link)
+
+      return {
+        ...prevValues,
+        links: [...filteredlinks],
+      }
+    })
   }
 
   return (
@@ -48,3 +64,4 @@ export default function LinksStep() {
     </form>
   )
 }
+export default LinksStep
