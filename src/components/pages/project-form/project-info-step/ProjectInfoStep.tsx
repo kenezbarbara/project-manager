@@ -29,21 +29,21 @@ const ProjectInfoStep: React.FC<ProjectInfoStepProps> = ({
   return (
     <form className="project-form" action="">
       <h5>Enter your project details as a first step</h5>
-      <label htmlFor="projectName">Your project name</label>
+      <label htmlFor="name">Your project name</label>
       <input
         type="text"
-        id="projectName"
-        name="projectName"
+        id="name"
+        name="name"
         onChange={handleInputChange}
-        value={formValues.projectName}
+        value={formValues.name}
       />
       <small>{formErrors.projectNameError}</small>
-      <label htmlFor="projectDescription">Detailed description</label>
+      <label htmlFor="description">Detailed description</label>
       <textarea
-        name="projectDescription"
-        id="projectDescription"
+        name="description"
+        id="description"
         onChange={handleInputChange}
-        value={formValues.projectDescription}
+        value={formValues.description}
       ></textarea>
       <small>{formErrors.projectDescriptionError}</small>
     </form>

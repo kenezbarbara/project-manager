@@ -6,10 +6,12 @@ import ProjectInfoStep from '../project-info-step/ProjectInfoStep'
 import TeamMembersStep from '../team-member-step/TeamMembersStep'
 import LinksStep from '../link-step/LinksStep'
 import type { TeamMember } from '@/types'
+import { addProject } from '@/services/dataService'
+import { useNavigate } from 'react-router'
 
 export interface ProjectFormValues {
-  projectName: string
-  projectDescription: string
+  name: string
+  description: string
   teamMembers: TeamMember[]
   links: string[]
 }
@@ -21,8 +23,8 @@ export interface ProjectFormErrors {
 
 export default function ProjectForm() {
   const initialFormValues: ProjectFormValues = {
-    projectName: '',
-    projectDescription: '',
+    name: '',
+    description: '',
     teamMembers: [],
     links: [],
   }
@@ -90,13 +92,13 @@ export default function ProjectForm() {
 
   const validateFormValues = (): boolean => {
     if (currentStep === 1) {
-      const { projectName, projectDescription } = formValues
+      const { name, description } = formValues
 
-      const isProjectNameEmpty = !projectName
-      const isProjectNameTooLong = projectName.length > 255
+      const isProjectNameEmpty = !name
+      const isProjectNameTooLong = name.length > 255
       const isProjectDescriptionNotInRange =
-        projectDescription !== '' &&
-        (projectDescription.length < 50 || projectDescription.length > 500)
+        description !== '' &&
+        (description.length < 50 || description.length > 500)
 
       setFormErrors({
         projectNameError: isProjectNameEmpty
@@ -119,6 +121,15 @@ export default function ProjectForm() {
     return false
   }
 
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    addProject(formValues).then(() => navigate('/'))
+  }
+
+  const navigate = useNavigate()
+
   return (
     <div>
       <div className="project-form-header">
@@ -134,7 +145,7 @@ export default function ProjectForm() {
           <FormButton
             text={currentStep === 3 ? 'Submit' : 'Continue'}
             color="#0dcaf0"
-            onClick={handleContinue}
+            onClick={currentStep === 3 ? handleSubmit : handleContinue}
           />
         </div>
       </div>
