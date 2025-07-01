@@ -3,7 +3,7 @@ import FormButton from '../form-button/FormButton'
 import './TeamMembersStep.css'
 import { getAllEmployees, getAllPositions } from '@/services/dataService'
 import type { TeamMember } from '@/types'
-import TeamMemberList from '../../TeamMemberList/TeamMemberList'
+import TeamMemberList from '../../team-member-list/TeamMemberList'
 
 // TeamMembersStep component allows users to add, view, and remove team members for a project,
 // including selecting employees and their positions.
