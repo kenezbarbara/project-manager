@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import FormButton from '../form-button/FormButton'
 import './LinksStep.css'
+import ProjectLinkList from '../../project-link-list/ProjectLinkList'
 
 export default function LinksStep() {
   const [selectedLink, setSelectedLink] = useState<string>('')
@@ -21,6 +22,10 @@ export default function LinksStep() {
     }
   }
 
+  const handleRemoveLink = (link: string) => {
+    setLinks((prevLinks) => prevLinks.filter((l) => l !== link))
+  }
+
   return (
     <form className="link-form">
       <h5>As a final step, add links to your project</h5>
@@ -38,17 +43,8 @@ export default function LinksStep() {
         value={selectedLink}
       />
       <FormButton text="Add link" color="#848789" onClick={handleAddLink} />
-      <div className="added-link-container">
-        <h4>Added links</h4>
-        <div className="link-list">
-          {links.map((link) => (
-            <div className="link-box" key={link}>
-              <a href="">{link}</a>
-              <button className="remove-link-btn">x</button>
-            </div>
-          ))}
-        </div>
-      </div>
+      <ProjectLinkList links={links} onRemove={handleRemoveLink} isEditable />
+      {/* We are in edit mode here, show 'x' */}
     </form>
   )
 }
