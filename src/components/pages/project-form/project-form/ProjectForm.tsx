@@ -11,27 +11,50 @@ export interface ProjectFormValues {
   projectDescription: string
 }
 
+export interface ProjectFormErrors {
+  projectNameError: string
+  projectDescriptionError: string
+}
+
 export default function ProjectForm() {
   const initialFormValues: ProjectFormValues = {
     projectName: '',
     projectDescription: '',
   }
 
-  const [currentStep, setCurrentStep] = useState<number>(1)
+  const initialFormErrors: ProjectFormErrors = {
+    projectNameError: '',
+    projectDescriptionError: '',
+  }
 
+  const [currentStep, setCurrentStep] = useState<number>(1)
   const [formValues, setFormValues] =
     useState<ProjectFormValues>(initialFormValues)
+  const [formErrors, setFormErrors] =
+    useState<ProjectFormErrors>(initialFormErrors)
 
   const renderStep = () => {
     switch (currentStep) {
       case 1:
-        return <ProjectInfoStep setFormValues={setFormValues} />
+        return (
+          <ProjectInfoStep
+            setFormValues={setFormValues}
+            formValues={formValues}
+            formErrors={formErrors}
+          />
+        )
       case 2:
         return <TeamMembersStep />
       case 3:
         return <LinksStep />
       default:
-        return <ProjectInfoStep setFormValues={setFormValues} />
+        return (
+          <ProjectInfoStep
+            setFormValues={setFormValues}
+            formValues={formValues}
+            formErrors={formErrors}
+          />
+        )
     }
   }
 
@@ -48,9 +71,40 @@ export default function ProjectForm() {
     e.preventDefault()
     e.stopPropagation()
 
-    if (currentStep < 3) {
+    if (!validateFormValues() && currentStep < 3) {
       setCurrentStep((prevStep) => prevStep + 1)
     }
+  }
+
+  const validateFormValues = (): boolean => {
+    if (currentStep === 1) {
+      const { projectName, projectDescription } = formValues
+
+      const isProjectNameEmpty = !projectName
+      const isProjectNameTooLong = projectName.length > 255
+      const isProjectDescriptionNotInRange =
+        projectDescription !== '' &&
+        (projectDescription.length < 50 || projectDescription.length > 500)
+
+      setFormErrors({
+        projectNameError: isProjectNameEmpty
+          ? 'Project name is required.'
+          : isProjectNameTooLong
+            ? 'Project name must be less than 255 characters.'
+            : '',
+        projectDescriptionError: isProjectDescriptionNotInRange
+          ? 'Project description must be between 50 and 500 characters.'
+          : '',
+      })
+
+      return (
+        isProjectNameEmpty ||
+        isProjectDescriptionNotInRange ||
+        isProjectNameTooLong
+      )
+    }
+
+    return false
   }
 
   return (
@@ -59,7 +113,12 @@ export default function ProjectForm() {
         <ProgressBar currentStep={currentStep} />
         {renderStep()}
         <div className="btn-container">
-          <FormButton text="Back" color="#212529" onClick={handleBack} />
+          <FormButton
+            text="Back"
+            color="#212529"
+            onClick={handleBack}
+            visibility={currentStep > 1 ? 'visible' : 'hidden'}
+          />
           <FormButton
             text="Continue"
             color="#0dcaf0"

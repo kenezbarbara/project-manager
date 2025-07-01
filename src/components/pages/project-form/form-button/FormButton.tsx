@@ -4,14 +4,20 @@ import './FormButton.css'
 interface FormButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string
   color: string
+  visibility?: 'visible' | 'hidden'
 }
 
-const FormButton: React.FC<FormButtonProps> = ({ text, color, ...props }) => {
+const FormButton: React.FC<FormButtonProps> = ({
+  text,
+  color,
+  visibility,
+  ...props
+}) => {
   return (
     <button
       className="step-button"
       {...props}
-      style={{ backgroundColor: color }}
+      style={{ backgroundColor: color, visibility }}
     >
       {text}
     </button>

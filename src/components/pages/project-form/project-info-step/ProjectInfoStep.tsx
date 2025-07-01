@@ -1,12 +1,21 @@
 import type { Dispatch, SetStateAction } from 'react'
 import './ProjectInfoStep.css'
-import type { ProjectFormValues } from '../project-form/ProjectForm'
+import type {
+  ProjectFormErrors,
+  ProjectFormValues,
+} from '../project-form/ProjectForm'
 
 interface ProjectInfoStepProps {
   setFormValues: Dispatch<SetStateAction<ProjectFormValues>>
+  formValues: ProjectFormValues
+  formErrors: ProjectFormErrors
 }
 
-const ProjectInfoStep: React.FC<ProjectInfoStepProps> = ({ setFormValues }) => {
+const ProjectInfoStep: React.FC<ProjectInfoStepProps> = ({
+  setFormValues,
+  formValues,
+  formErrors,
+}) => {
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -26,13 +35,17 @@ const ProjectInfoStep: React.FC<ProjectInfoStepProps> = ({ setFormValues }) => {
         id="projectName"
         name="projectName"
         onChange={handleInputChange}
+        value={formValues.projectName}
       />
+      <small>{formErrors.projectNameError}</small>
       <label htmlFor="projectDescription">Detailed description</label>
       <textarea
         name="projectDescription"
         id="projectDescription"
         onChange={handleInputChange}
+        value={formValues.projectDescription}
       ></textarea>
+      <small>{formErrors.projectDescriptionError}</small>
     </form>
   )
 }
