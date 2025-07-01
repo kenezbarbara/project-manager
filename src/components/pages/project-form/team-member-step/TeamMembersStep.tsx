@@ -4,6 +4,9 @@ import './TeamMembersStep.css'
 import { getAllEmployees, getAllPositions } from '@/services/dataService'
 import type { TeamMember } from '@/types'
 
+// TeamMembersStep component allows users to add, view, and remove team members for a project,
+// including selecting employees and their positions.
+
 export default function TeamMembersStep() {
   const [positions, setPositions] = useState<string[]>([])
   const [employees, setEmployees] = useState<string[]>([])
@@ -47,7 +50,9 @@ export default function TeamMembersStep() {
         position: selectedPosition,
       }
       const isDuplicate = teamMembers.some(
-        (member) => member.name === newTeamMember.name
+        (member) =>
+          member.name === newTeamMember.name &&
+          member.position === newTeamMember.position
       )
       if (isDuplicate) {
         alert('This team member has already been added!')
@@ -61,6 +66,21 @@ export default function TeamMembersStep() {
     } else {
       alert('Please select an employee and a position!')
     }
+  }
+
+  const handleRemoveTeamMember = (
+    memberNameToRemove: string,
+    memberPositionToRemove: string
+  ) => {
+    setTeamMembers((prevMembers) =>
+      prevMembers.filter(
+        (member) =>
+          !(
+            member.name === memberNameToRemove &&
+            member.position === memberPositionToRemove
+          )
+      )
+    )
   }
 
   return (
@@ -126,10 +146,22 @@ export default function TeamMembersStep() {
         <div className="added-team-members-container">
           <h4>Current Team Members</h4>
           <div className="team-members-list">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="team-member-box">
+            {teamMembers.map((member) => (
+              <div
+                key={`${member.name}-${member.position}`}
+                className="team-member-box"
+              >
                 <span className="member-name">{member.name}</span>
                 <span className="member-position">({member.position})</span>
+                {/* Remove member button */}
+                <button
+                  className="remove-member-btn"
+                  onClick={() =>
+                    handleRemoveTeamMember(member.name, member.position)
+                  }
+                >
+                  x
+                </button>
               </div>
             ))}
           </div>

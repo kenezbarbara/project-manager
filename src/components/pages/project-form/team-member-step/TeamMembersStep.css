@@ -139,6 +139,17 @@ select {
   color: #0056b3;
 }
 
+.remove-member-btn {
+  background: none;
+  border: none;
+  color: #0056b3;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  padding: 0;
+  line-height: 1;
+}
+
 @media (max-width: 768px) {
   .team-member-row {
     grid-template-columns: 1fr;
