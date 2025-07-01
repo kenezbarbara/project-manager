@@ -2,11 +2,11 @@ export default function ProgressBar({ currentStep }: { currentStep: number }) {
   const renderPercentage = () => {
     switch (currentStep) {
       case 1:
-        return 0
-      case 2:
         return 33
-      case 3:
+      case 2:
         return 66
+      case 3:
+        return 100
       default:
         return 0
     }

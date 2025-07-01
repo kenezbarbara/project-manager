@@ -35,14 +35,36 @@ export default function ProjectForm() {
     }
   }
 
+  const handleBack = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    if (currentStep > 1) {
+      setCurrentStep((prevStep) => prevStep - 1)
+    }
+  }
+
+  const handleContinue = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    if (currentStep < 3) {
+      setCurrentStep((prevStep) => prevStep + 1)
+    }
+  }
+
   return (
     <div>
       <div className="project-form-header">
         <ProgressBar currentStep={currentStep} />
         {renderStep()}
         <div className="btn-container">
-          <FormButton text="Back" color="#212529" />
-          <FormButton text="Continue" color="#0dcaf0" />
+          <FormButton text="Back" color="#212529" onClick={handleBack} />
+          <FormButton
+            text="Continue"
+            color="#0dcaf0"
+            onClick={handleContinue}
+          />
         </div>
       </div>
     </div>
