@@ -44,6 +44,10 @@ export default function TeamMembersStep() {
     }
   }, [])
 
+  const filteredEmployees = employees.filter((employee) =>
+    employee.toLowerCase().includes(selectedEmployee.toLowerCase())
+  )
+
   const handleAddTeamMember = () => {
     if (selectedEmployee && selectedPosition) {
       const newTeamMember: TeamMember = {
@@ -99,23 +103,33 @@ export default function TeamMembersStep() {
             id="employee-name"
             placeholder="Start typing a name..."
             value={selectedEmployee}
-            onChange={(e) => setSelectedEmployee(e.target.value)}
+            onChange={(e) => {
+              setSelectedEmployee(e.target.value)
+              // Show dropdown on input change
+              if (!showDropdown) setShowDropdown(true)
+            }}
             onFocus={() => setShowDropdown(true)}
+            autoComplete="off"
           />
           {showDropdown && (
             <div className="autocomplete-dropdown">
-              {employees.map((employee) => (
-                <div
-                  key={employee}
-                  className="autocomplete-item"
-                  onClick={() => {
-                    setSelectedEmployee(employee)
-                    setShowDropdown(false)
-                  }}
-                >
-                  {employee}
-                </div>
-              ))}
+              {filteredEmployees.length > 0 ? (
+                filteredEmployees.map((employee) => (
+                  <div
+                    key={employee}
+                    className="autocomplete-item"
+                    onClick={() => {
+                      setSelectedEmployee(employee)
+                      setShowDropdown(false)
+                    }}
+                  >
+                    {employee}
+                  </div>
+                ))
+              ) : (
+                // Display a message if no results are found after filtering
+                <div className="autocomplete-item">No matching employees</div>
+              )}
             </div>
           )}
         </div>
@@ -148,7 +162,7 @@ export default function TeamMembersStep() {
           members={teamMembers}
           onRemove={handleRemoveTeamMember}
           // We are in edit mode here, show 'x'
-          isEditable={true}
+          isEditable
         />
       )}
     </div>
