@@ -5,10 +5,12 @@ import { useState } from 'react'
 import ProjectInfoStep from '../project-info-step/ProjectInfoStep'
 import TeamMembersStep from '../team-member-step/TeamMembersStep'
 import LinksStep from '../link-step/LinksStep'
+import type { TeamMember } from '@/types'
 
 export interface ProjectFormValues {
   projectName: string
   projectDescription: string
+  teamMembers: TeamMember[]
 }
 
 export interface ProjectFormErrors {
@@ -20,6 +22,7 @@ export default function ProjectForm() {
   const initialFormValues: ProjectFormValues = {
     projectName: '',
     projectDescription: '',
+    teamMembers: [],
   }
 
   const initialFormErrors: ProjectFormErrors = {
@@ -44,7 +47,12 @@ export default function ProjectForm() {
           />
         )
       case 2:
-        return <TeamMembersStep />
+        return (
+          <TeamMembersStep
+            setFormValues={setFormValues}
+            formValues={formValues}
+          />
+        )
       case 3:
         return <LinksStep />
       default:

@@ -1,20 +1,34 @@
-import { useEffect, useState } from 'react'
+import React, {
+  useEffect,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from 'react'
 import FormButton from '../form-button/FormButton'
 import './TeamMembersStep.css'
 import { getAllEmployees, getAllPositions } from '@/services/dataService'
 import type { TeamMember } from '@/types'
 import TeamMemberList from '../../team-member-list/TeamMemberList'
+import type { ProjectFormValues } from '../project-form/ProjectForm'
 
 // TeamMembersStep component allows users to add, view, and remove team members for a project,
 // including selecting employees and their positions.
 
-export default function TeamMembersStep() {
+interface TeamMemberStepProps {
+  setFormValues: Dispatch<SetStateAction<ProjectFormValues>>
+  formValues: ProjectFormValues
+}
+
+const TeamMembersStep: React.FC<TeamMemberStepProps> = ({
+  setFormValues,
+  formValues,
+}) => {
   const [positions, setPositions] = useState<string[]>([])
   const [employees, setEmployees] = useState<string[]>([])
   const [showDropdown, setShowDropdown] = useState<boolean>(false)
   const [selectedEmployee, setSelectedEmployee] = useState<string>('')
   const [selectedPosition, setSelectedPosition] = useState<string>('')
-  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([])
+  const teamMembers = formValues.teamMembers
 
   const loadPositions = () => {
     getAllPositions().then((resp) => setPositions(resp))
@@ -63,7 +77,10 @@ export default function TeamMembersStep() {
         alert('This team member has already been added!')
         return
       }
-      setTeamMembers((prevMembers) => [...prevMembers, newTeamMember])
+      setFormValues((prevValues: ProjectFormValues) => ({
+        ...prevValues,
+        teamMembers: [...prevValues.teamMembers, newTeamMember],
+      }))
 
       setSelectedEmployee('')
       setSelectedPosition('')
@@ -77,15 +94,20 @@ export default function TeamMembersStep() {
     memberNameToRemove: string,
     memberPositionToRemove: string
   ) => {
-    setTeamMembers((prevMembers) =>
-      prevMembers.filter(
+    setFormValues((prevValues: ProjectFormValues) => {
+      const filteredMembers = prevValues.teamMembers.filter(
         (member) =>
           !(
             member.name === memberNameToRemove &&
             member.position === memberPositionToRemove
           )
       )
-    )
+
+      return {
+        ...prevValues,
+        teamMembers: [...filteredMembers],
+      }
+    })
   }
 
   return (
@@ -168,3 +190,4 @@ export default function TeamMembersStep() {
     </div>
   )
 }
+export default TeamMembersStep
