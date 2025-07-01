@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react'
 import FormButton from '../form-button/FormButton'
 import './TeamMembersStep.css'
 import { getAllEmployees, getAllPositions } from '@/services/dataService'
+import type { TeamMember } from '@/types'
 
 export default function TeamMembersStep() {
-  const [positions, setPositions] = useState<Array<string>>([])
-  const [employees, setEmployees] = useState<Array<string>>([])
+  const [positions, setPositions] = useState<string[]>([])
+  const [employees, setEmployees] = useState<string[]>([])
   const [showDropdown, setShowDropdown] = useState<boolean>(false)
   const [selectedEmployee, setSelectedEmployee] = useState<string>('')
+  const [selectedPosition, setSelectedPosition] = useState<string>('')
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([])
 
   const loadPositions = () => {
     getAllPositions().then((resp) => setPositions(resp))
@@ -24,8 +27,8 @@ export default function TeamMembersStep() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement
-      if (!target.closest('.select-collector')) {
+      const clickedElement = event.target as HTMLElement
+      if (!clickedElement.closest('.select-collector')) {
         setShowDropdown(false)
       }
     }
@@ -36,6 +39,29 @@ export default function TeamMembersStep() {
       document.removeEventListener('click', handleClickOutside)
     }
   }, [])
+
+  const handleAddTeamMember = () => {
+    if (selectedEmployee && selectedPosition) {
+      const newTeamMember: TeamMember = {
+        name: selectedEmployee,
+        position: selectedPosition,
+      }
+      const isDuplicate = teamMembers.some(
+        (member) => member.name === newTeamMember.name
+      )
+      if (isDuplicate) {
+        alert('This team member has already been added!')
+        return
+      }
+      setTeamMembers((prevMembers) => [...prevMembers, newTeamMember])
+
+      setSelectedEmployee('')
+      setSelectedPosition('')
+      setShowDropdown(false)
+    } else {
+      alert('Please select an employee and a position!')
+    }
+  }
 
   return (
     <div className="form-step-container">
@@ -57,9 +83,9 @@ export default function TeamMembersStep() {
           />
           {showDropdown && (
             <div className="autocomplete-dropdown">
-              {employees.map((employee, index) => (
+              {employees.map((employee) => (
                 <div
-                  key={index}
+                  key={employee}
                   className="autocomplete-item"
                   onClick={() => {
                     setSelectedEmployee(employee)
@@ -75,19 +101,40 @@ export default function TeamMembersStep() {
 
         <div className="select-collector">
           <label htmlFor="employee-position">Position</label>
-          <select id="employee-position">
+          <select
+            id="employee-position"
+            value={selectedPosition}
+            onChange={(e) => setSelectedPosition(e.target.value)}
+          >
             <option value="">Select a position</option>
-            {positions.map((position, index) => (
-              <option key={index} value={position}>
+            {positions.map((position) => (
+              <option key={position} value={position}>
                 {position}
               </option>
             ))}
           </select>
         </div>
         <div className="btn-holder">
-          <FormButton text="Add Team Member" color="#848789" />
+          <FormButton
+            text="Add Team Member"
+            color="#848789"
+            onClick={handleAddTeamMember}
+          />
         </div>
       </div>
+      {teamMembers.length > 0 && (
+        <div className="added-team-members-container">
+          <h4>Current Team Members</h4>
+          <div className="team-members-list">
+            {teamMembers.map((member, index) => (
+              <div key={index} className="team-member-box">
+                <span className="member-name">{member.name}</span>
+                <span className="member-position">({member.position})</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
