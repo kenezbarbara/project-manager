@@ -1,24 +1,47 @@
 import { useEffect, useState } from 'react'
 import FormButton from '../form-button/FormButton'
 import './TeamMembersStep.css'
-import { getAllPositions } from '@/services/dataService'
+import { getAllEmployees, getAllPositions } from '@/services/dataService'
 
 export default function TeamMembersStep() {
   const [positions, setPositions] = useState<Array<string>>([])
+  const [employees, setEmployees] = useState<Array<string>>([])
+  const [showDropdown, setShowDropdown] = useState<boolean>(false)
+  const [selectedEmployee, setSelectedEmployee] = useState<string>('')
 
   const loadPositions = () => {
     getAllPositions().then((resp) => setPositions(resp))
   }
 
+  const loadEmployees = () => {
+    getAllEmployees().then((resp) => setEmployees(resp))
+  }
+
   useEffect(() => {
+    loadEmployees()
     loadPositions()
+  }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement
+      if (!target.closest('.select-collector')) {
+        setShowDropdown(false)
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+    }
   }, [])
 
   return (
     <div className="form-step-container">
       <h3 className="form-step-container-text">Add Team Members</h3>
       <p className="form-step-container-text">
-        Specify the colleagues working on this project.
+        Specify the colleagues working on this project
       </p>
 
       <div className="team-member-row">
@@ -28,12 +51,26 @@ export default function TeamMembersStep() {
             type="text"
             id="employee-name"
             placeholder="Start typing a name..."
+            value={selectedEmployee}
+            onChange={(e) => setSelectedEmployee(e.target.value)}
+            onFocus={() => setShowDropdown(true)}
           />
-          <div className="autocomplete-dropdown">
-            <div className="autocomplete-item">Alice Smith</div>
-            <div className="autocomplete-item">Bob Johnson</div>
-            <div className="autocomplete-item">Charlie Brown</div>
-          </div>
+          {showDropdown && (
+            <div className="autocomplete-dropdown">
+              {employees.map((employee, index) => (
+                <div
+                  key={index}
+                  className="autocomplete-item"
+                  onClick={() => {
+                    setSelectedEmployee(employee)
+                    setShowDropdown(false)
+                  }}
+                >
+                  {employee}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="select-collector">

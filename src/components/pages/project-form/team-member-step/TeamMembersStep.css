@@ -93,8 +93,7 @@ select {
 .btn-holder {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
+  align-items: flex-end;
 }
 
 @media (max-width: 768px) {
