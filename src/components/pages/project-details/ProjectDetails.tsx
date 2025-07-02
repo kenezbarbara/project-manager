@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import TeamMemberList from '../team-member-list/TeamMemberList'
 import ProjectLinkList from '../project-link-list/ProjectLinkList'
+import './ProjectDetails.css'
 
 type RouteParams = {
   id: string
@@ -25,10 +26,7 @@ export default function ProjectDetails() {
 
   if (!projectDetails) {
     return (
-      <div
-        className="text-center mt-5 p-5 bg-light rounded-2 bg-opacity-75"
-        style={{ minHeight: '30vh' }}
-      >
+      <div className="project-details-container">
         <h2>Loading project details...</h2>
       </div>
     )
@@ -36,10 +34,7 @@ export default function ProjectDetails() {
 
   return (
     <div>
-      <div
-        className="text-center mt-5 p-5 bg-light rounded-2 bg-opacity-75"
-        style={{ minHeight: '40vh', maxHeight: '70vh' }}
-      >
+      <div className="project-details-container">
         <h1>{projectDetails.name}</h1>
         {projectDetails.description && <h6>{projectDetails?.description}</h6>}
         {projectDetails.teamMembers.length > 0 && (
