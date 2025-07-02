@@ -12,7 +12,7 @@ import {
   Route,
   RouterProvider,
 } from 'react-router'
-import { ProjectDetails, ProjectForm, ProjectList } from './components/index.ts'
+import { ProjectDetails, ProjectForm, ProjectList } from '@/components/pages'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
