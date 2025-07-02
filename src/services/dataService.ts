@@ -24,6 +24,16 @@ export const addProject = async (
   }
 }
 
+//*Get a project by ID
+export const getProjectById = async (id: string): Promise<Project> => {
+  try {
+    const result = await axios.get<Project>(`${API_BASE_URL}/projects/${id}`)
+    return result.data
+  } catch {
+    throw new Error('Failed to fetch project')
+  }
+}
+
 //*Get all employees
 export const getAllEmployees = async (): Promise<string[]> => {
   try {

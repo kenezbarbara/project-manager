@@ -66,6 +66,7 @@ export default function ProjectList() {
             key={project.id}
             name={project.name}
             description={project.description}
+            to={`/project-details/${project.id}`}
           />
         ))}
         {/* Show message if no match found*/}

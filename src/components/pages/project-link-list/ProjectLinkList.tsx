@@ -17,7 +17,7 @@ const ProjectLinkList: React.FC<ProjectLinkListProps> = ({
 
   return (
     <div className="added-link-container">
-      <h4>Added links</h4>
+      <h4>Links related to the project</h4>
       <div className="link-list">
         {links.map((link) => (
           <div className="link-box" key={link}>

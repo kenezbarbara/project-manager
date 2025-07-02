@@ -19,7 +19,7 @@ const TeamMemberList: React.FC<TeamMemberListProps> = ({
 
   return (
     <div className="added-team-members-container">
-      <h4>Current Team Members</h4>
+      <h4>Team Members</h4>
       <div className="team-members-list">
         {members.map((member) => (
           <div

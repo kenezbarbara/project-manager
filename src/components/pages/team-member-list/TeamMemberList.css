@@ -2,7 +2,7 @@
 .added-team-members-container {
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid #d5d4d4; /* A separator line */
+  border-top: 1px solid #b5b5b5; /* A separator line */
 }
 
 .added-team-members-container h4 {
@@ -42,6 +42,7 @@
 }
 
 .remove-member-btn {
+  font-weight: bold;
   background: none;
   border: none;
   color: #0056b3;
