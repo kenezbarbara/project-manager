@@ -20,13 +20,13 @@
 
 .team-member-box {
   background-color: #e0f2f7;
-  border: 1px solid #b3e0ff;
+  border: 1px solid #81d7e8;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
   font-size: 1rem;
-  color: #0056b3;
+  color: #212529;
   white-space: nowrap;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
@@ -38,14 +38,14 @@
 
 .team-member-box .member-position {
   font-style: italic;
-  color: #0056b3;
+  color: #212529;
 }
 
 .remove-member-btn {
   font-weight: bold;
   background: none;
   border: none;
-  color: #0056b3;
+  color: #212529;
   font-size: 1.1rem;
   cursor: pointer;
   margin-left: 1rem;
