@@ -110,6 +110,36 @@ const TeamMembersStep: React.FC<TeamMemberStepProps> = ({
     })
   }
 
+  const handleSelectedEmployee = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setSelectedEmployee(e.target.value)
+    // Show dropdown on input change
+    if (!showDropdown) setShowDropdown(true)
+  }
+
+  const handleSelectedEmployeeFocus = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setShowDropdown(true)
+  }
+
+  const handleDropDownHide = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    const target = e.target as HTMLElement
+    setSelectedEmployee(target.dataset.key || '')
+    setShowDropdown(false)
+  }
+
+  const handleSelectedPosition = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setSelectedPosition(e.target.value)
+  }
+
   return (
     <div className="form-step-container">
       <h3 className="form-step-container-text">Add Team Members</h3>
@@ -125,12 +155,8 @@ const TeamMembersStep: React.FC<TeamMemberStepProps> = ({
             id="employee-name"
             placeholder="Start typing a name..."
             value={selectedEmployee}
-            onChange={(e) => {
-              setSelectedEmployee(e.target.value)
-              // Show dropdown on input change
-              if (!showDropdown) setShowDropdown(true)
-            }}
-            onFocus={() => setShowDropdown(true)}
+            onChange={handleSelectedEmployee}
+            onFocus={handleSelectedEmployeeFocus}
             autoComplete="off"
           />
           {showDropdown && (
@@ -140,16 +166,13 @@ const TeamMembersStep: React.FC<TeamMemberStepProps> = ({
                   <div
                     key={employee}
                     className="autocomplete-item"
-                    onClick={() => {
-                      setSelectedEmployee(employee)
-                      setShowDropdown(false)
-                    }}
+                    data-key={employee}
+                    onClick={handleDropDownHide}
                   >
                     {employee}
                   </div>
                 ))
               ) : (
-                // Display a message if no results are found after filtering
                 <div className="autocomplete-item">No matching employees</div>
               )}
             </div>
@@ -161,7 +184,7 @@ const TeamMembersStep: React.FC<TeamMemberStepProps> = ({
           <select
             id="employee-position"
             value={selectedPosition}
-            onChange={(e) => setSelectedPosition(e.target.value)}
+            onChange={handleSelectedPosition}
           >
             <option value="">Select a position</option>
             {positions.map((position) => (
@@ -183,7 +206,6 @@ const TeamMembersStep: React.FC<TeamMemberStepProps> = ({
         <TeamMemberList
           members={teamMembers}
           onRemove={handleRemoveTeamMember}
-          // We are in edit mode here, show 'x'
           isEditable
         />
       )}

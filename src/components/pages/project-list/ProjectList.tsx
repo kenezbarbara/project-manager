@@ -38,6 +38,8 @@ export default function ProjectList() {
   }, [allProjects, searchTerm])
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
     setSearchTerm(e.target.value)
   }
 

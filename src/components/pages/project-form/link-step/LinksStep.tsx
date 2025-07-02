@@ -15,6 +15,7 @@ const LinksStep: React.FC<LinksStepProps> = ({ setFormValues, formValues }) => {
 
   const handleAddLink = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
+    e.stopPropagation()
     const newLink = selectedLink
     if (newLink.trim() !== '') {
       // Check if the link is not empty
@@ -29,6 +30,12 @@ const LinksStep: React.FC<LinksStepProps> = ({ setFormValues, formValues }) => {
       }))
       setSelectedLink('')
     }
+  }
+
+  const handleSelectedLink = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setSelectedLink(e.target.value)
   }
 
   const handleRemoveLink = (link: string) => {
@@ -53,14 +60,11 @@ const LinksStep: React.FC<LinksStepProps> = ({ setFormValues, formValues }) => {
         placeholder="https://example.com"
         pattern="https://.*"
         size={30}
-        onChange={(e) => {
-          setSelectedLink(e.target.value)
-        }}
+        onChange={handleSelectedLink}
         value={selectedLink}
       />
       <FormButton text="Add link" color="#848789" onClick={handleAddLink} />
       <ProjectLinkList links={links} onRemove={handleRemoveLink} isEditable />
-      {/* We are in edit mode here, show 'x' */}
     </form>
   )
 }
