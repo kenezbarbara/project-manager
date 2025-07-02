@@ -12,7 +12,7 @@ export default function ProgressBar({ currentStep }: { currentStep: number }) {
     }
   }
   return (
-    <div className="progress" role="progressbar" style={{ height: '20px' }}>
+    <div className="progress" role="progressbar">
       <div
         className="progress-bar bg-info"
         style={{ width: `${renderPercentage()}%` }}

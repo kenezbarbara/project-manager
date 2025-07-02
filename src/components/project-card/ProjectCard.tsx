@@ -29,10 +29,7 @@ export default function ProjectCard({
           <img src={imageUrl} alt={name} />
           <div className="card-body text-white bg-secondary">
             <h5 className="card-title ">{name}</h5>
-            <p
-              className="card-text d-inline-block text-truncate"
-              style={{ maxWidth: '100%' }}
-            >
+            <p className="card-text d-inline-block text-truncate mw-100">
               {description}
             </p>
           </div>
