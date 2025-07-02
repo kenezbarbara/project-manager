@@ -1,7 +1,6 @@
 import { useState, type Dispatch, type SetStateAction } from 'react'
-import FormButton from '../form-button/FormButton'
 import './LinksStep.css'
-import ProjectLinkList from '../../project-link-list/ProjectLinkList'
+import { ProjectLinkList, FormButton } from '@/components/pages'
 import type { ProjectFormValues } from '../project-form/ProjectForm'
 
 interface LinksStepProps {

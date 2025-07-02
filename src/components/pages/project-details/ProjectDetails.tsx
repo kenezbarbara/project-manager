@@ -2,8 +2,7 @@ import { getProjectById } from '@/services/dataService'
 import type { Project } from '@/types'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import TeamMemberList from '../team-member-list/TeamMemberList'
-import ProjectLinkList from '../project-link-list/ProjectLinkList'
+import { TeamMemberList, ProjectLinkList } from '@/components/pages'
 import './ProjectDetails.css'
 
 type RouteParams = {

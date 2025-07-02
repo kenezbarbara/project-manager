@@ -4,15 +4,11 @@ import React, {
   type Dispatch,
   type SetStateAction,
 } from 'react'
-import FormButton from '../form-button/FormButton'
+import { FormButton, TeamMemberList } from '@/components/pages'
 import './TeamMembersStep.css'
 import { getAllEmployees, getAllPositions } from '@/services/dataService'
 import type { TeamMember } from '@/types'
-import TeamMemberList from '../../team-member-list/TeamMemberList'
 import type { ProjectFormValues } from '../project-form/ProjectForm'
-
-// TeamMembersStep component allows users to add, view, and remove team members for a project,
-// including selecting employees and their positions.
 
 interface TeamMemberStepProps {
   setFormValues: Dispatch<SetStateAction<ProjectFormValues>>

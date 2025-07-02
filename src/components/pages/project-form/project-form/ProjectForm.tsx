@@ -1,10 +1,12 @@
-import ProgressBar from '@/components/progress-bar/ProgressBar'
+import { ProgressBar } from '@/components'
 import './ProjectForm.css'
-import FormButton from '../form-button/FormButton'
+import {
+  FormButton,
+  ProjectInfoStep,
+  TeamMembersStep,
+  LinksStep,
+} from '@/components/pages'
 import { useState } from 'react'
-import ProjectInfoStep from '../project-info-step/ProjectInfoStep'
-import TeamMembersStep from '../team-member-step/TeamMembersStep'
-import LinksStep from '../link-step/LinksStep'
 import type { TeamMember } from '@/types'
 import { addProject } from '@/services/dataService'
 import { useNavigate } from 'react-router'
