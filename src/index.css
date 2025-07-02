@@ -1,5 +1,5 @@
 /*Background style*/
 .project-list-bg {
   background-image: url('./assets/project_list_background.png');
-  background-size: cover;
+  background-size: content;
 }
